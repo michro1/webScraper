@@ -2,52 +2,66 @@
 // Authors: Valery Bamberger, Claudia List, Michelle Rosenberger
 // Date:    May 10, 2019
 
-let fs      = require("fs");
-let Parser  = require('rss-parser');
-let parser  = new Parser();
 
-(async () => {
+function timer() {
 
-  // Define .rss feed
-  let feed = await parser.parseURL('https://www.nzz.ch/digital.rss');
+  // Check date and time
+  var d = new Date();
+  var t = d.toLocaleTimeString();
+  console.log("Time: " + t);
 
-  // Create empty array
-  let article_array = [];
+  // Packages
+  let fs      = require("fs");
+  let Parser  = require('rss-parser');
+  let parser  = new Parser();
 
-  // Loop for information
-  feed.items.forEach(item => {
+  (async () => {
 
-    // Define objects and save information
-    let article_object = {
-      title:    item.title,
-      excerpt:  item.content,
-      url:      item.link,
-      date:     item.pubDate
-    };
+    // Define .rss feed
+    let feed = await parser.parseURL('https://www.nzz.ch/digital.rss');
 
-    // Populate array
-    article_array.push(article_object);
-  
-  });
+    // Create empty array
+    let article_array = [];
 
-  // Sort dates
-  article_array.sort((a, b) => {
-    if (Date.parse(a.date) > Date.parse(b.date)) {
-      return -1;
-    } else {
-      return 1;
-    }
-                })
+    // Loop for information
+    feed.items.forEach(item => {
 
-  // Write output to nzz_digital.js
-  fs.writeFile("nzz_digital.js", JSON.stringify(article_array, null, 2), function(err) {
-    if(err) {
-        return console.log(err);
-    }
-    console.log("Nzz_digitial file saved successfully!");
+      // Define objects and save information
+      let article_object = {
+        title:    item.title,
+        excerpt:  item.content,
+        url:      item.link,
+        date:     item.pubDate
+      };
+
+      // Populate array
+      article_array.push(article_object);
     
-  });
- 
-})();
+    });
+
+    // Sort dates
+    article_array.sort((a, b) => {
+      if (Date.parse(a.date) > Date.parse(b.date)) {
+        return -1;
+      } else {
+        return 1;
+      }
+                  })
+
+    // Write output to nzz_digital.js
+    fs.writeFile("nzz_digital.js", JSON.stringify(article_array, null, 2), function(err) {
+      if(err) {
+          return console.log(err);
+      }
+      console.log("Nzz_digitial file saved successfully! \n");
+      
+    });
+  
+  })();
+
+};
+
+// Call function (time is specified in milliseconds)
+let timeVar = setInterval(timer, 1000 * 60 * 60 * 2); // Check 2 hours
 
 
