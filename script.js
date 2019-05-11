@@ -7,7 +7,6 @@ let fs      = require("fs");
 let Parser  = require('rss-parser');
 let parser  = new Parser();
 
-
 // Define scrape function
 async function scrape() {
 
@@ -18,7 +17,7 @@ async function scrape() {
   let article_array = [];
 
   // Loop for information
-  feed.items.forEach(item => {
+  feed.items.forEach(function(item) {
 
     // Define objects and save information
     let article_object = {
@@ -34,23 +33,22 @@ async function scrape() {
   });
 
   // Sort array by dates
-  article_array.sort((a, b) => {
+  article_array.sort(function(a, b) {
     if (Date.parse(a.date) > Date.parse(b.date)) {
       return -1;
     } else {
       return 1;
     }
-  })
+  });
 
   // Write output to nzz_digital.js
   fs.writeFile("nzz_digital.js", JSON.stringify(article_array, null, 2), function(err) {
     if(err) {
-        return console.log(err);
+      console.log(err);
+    } else {
+      console.log("Nzz_digitial file saved successfully at: " + new Date().toLocaleTimeString() + "\n");
     }
-    console.log("Nzz_digitial file saved successfully at: " + new Date().toLocaleTimeString() + "\n");
-    
   });
-
 };
 
 
@@ -67,6 +65,4 @@ console.log("Updating every: " + intervalSeconds + " seconds.");
 // Call function
 scrape();
 setInterval(scrape, 1000 * intervalSeconds);
-
-
 
