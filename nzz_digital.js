@@ -1,5 +1,11 @@
 [
   {
+    "title": "Windows im Aufwind",
+    "excerpt": "Microsofts Windows 10 hat es mittlerweile auf über 800 Millionen Geräte geschafft – Tendenz steigend. Jetzt kommt ein stark überarbeitete Version des Betriebssystems.",
+    "url": "https://www.nzz.ch/digital/windows-im-aufwind-ld.1481428",
+    "date": "Mon, 13 May 2019 15:43:12 +0200"
+  },
+  {
     "title": "Bald werden Smartphones die Welt mit neuen Augen sehen",
     "excerpt": "Ein neuer Kamerasensor von Samsung bringt es auf eine Auflösung von gewaltigen 64 Megapixeln. Aufnahmen mit dem Smartphone werden damit noch detaillierter und gelingen auch bei wenig Licht.",
     "url": "https://www.nzz.ch/digital/bald-werden-smartphones-die-welt-mit-neuen-augen-sehen-ld.1480981",
@@ -45,12 +51,6 @@
     "excerpt": "Ein Fehler im Firefox-Browser verhindert, dass Zusatzprogramme genutzt werden können. Hersteller Mozilla hat ein Update bereitgestellt.",
     "url": "https://www.nzz.ch/digital/firefox-bug-blockiert-browser-erweiterungen-ld.1479906",
     "date": "Mon, 06 May 2019 23:35:44 +0200"
-  },
-  {
-    "title": "Klanggenuss ohne Kabel",
-    "excerpt": "Bowers & Wilkins hat ein kabelloses Multiroom-Audiosystem vorgestellt. Der britische Highend-Audiospezialist kommt spät auf einen hart umkämpften Markt.",
-    "url": "https://www.nzz.ch/digital/klanggenuss-ohne-kabel-ld.1479554",
-    "date": "Sun, 05 May 2019 13:01:18 +0200"
   },
   {
     "title": "Facebook löscht die Profile von rechten Kommentatoren wie Alex Jones – Fanseiten sind weiterhin aufrufbar",

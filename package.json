@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/michro1/webScraper#readme",
   "dependencies": {
-    "rss-parser": "^3.7.0"
+    "rss-parser": "^3.7.0",
+    "shelljs": "^0.8.3"
   }
 }

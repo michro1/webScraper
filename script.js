@@ -6,6 +6,7 @@
 let fs      = require("fs");
 let Parser  = require('rss-parser');
 let parser  = new Parser();
+const { exec } = require('child_process');
 
 // Define scrape function
 async function scrape() {
@@ -47,6 +48,7 @@ async function scrape() {
       console.log(err);
     } else {
       console.log("Nzz_digitial file saved successfully at: " + new Date().toLocaleTimeString() + "\n");
+      exec(`code ./nzz_digital.js`);
     }
   });
 };
