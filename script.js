@@ -8,19 +8,14 @@ let Parser  = require('rss-parser');
 let parser  = new Parser();
 const { exec } = require('child_process');
 
-// Define scrape function
 async function scrape() {
 
-  // Define .rss feed
   let feed = await parser.parseURL('https://www.nzz.ch/digital.rss');
 
-  // Create empty array
   let article_array = [];
 
-  // Loop for information
   feed.items.forEach(function(item) {
 
-    // Define objects and save information
     let article_object = {
       title:    item.title,
       excerpt:  item.content,
@@ -28,12 +23,10 @@ async function scrape() {
       date:     item.pubDate
     };
 
-    // Populate array
     article_array.push(article_object);
   
   });
 
-  // Sort array by dates
   article_array.sort(function(a, b) {
     if (Date.parse(a.date) > Date.parse(b.date)) {
       return -1;
@@ -42,7 +35,6 @@ async function scrape() {
     }
   });
 
-  // Write output to nzz_digital.js
   fs.writeFile("nzz_digital.js", JSON.stringify(article_array, null, 2), function(err) {
     if(err) {
       console.log(err);
@@ -54,17 +46,15 @@ async function scrape() {
 };
 
 
-// Set default time interval
-let intervalSeconds = 60 * 60 * 24;
+let intervalSeconds = 60 * 60 * 24; // Default time interval 
 
-// User specified time interval
-if (process.argv.length === 3) {
+if (process.argv.length === 3) {  // User specified time interval
   intervalSeconds = process.argv[2] 
 }
 
 console.log("Updating every: " + intervalSeconds + " seconds.");
 
-// Call function
+
 scrape();
 setInterval(scrape, 1000 * intervalSeconds);
 
